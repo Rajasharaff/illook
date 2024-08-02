@@ -1,0 +1,27 @@
+import React from 'react';
+import styled from 'styled-components';
+
+const HeroSection = styled.section`
+  position: relative;
+  height: 100vh;
+  background: url('/images/hero-background.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+`;
+
+const HeroText = styled.h1`
+  font-size: 3rem;
+`;
+
+const Hero = () => {
+  return (
+    <HeroSection>
+      <HeroText>Transform Your Space with Elegance</HeroText>
+    </HeroSection>
+  );
+};
+
+export default Hero;

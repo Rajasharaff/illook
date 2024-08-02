@@ -1,0 +1,65 @@
+import React from 'react';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
+const ServicesSection = styled.section`
+  padding: 2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+`;
+
+const ServicesContent = styled(motion.div)`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+`;
+
+const ServiceItem = styled(motion.div)`
+  width: 300px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const servicesVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 1, staggerChildren: 0.2 } },
+};
+
+const serviceItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const Services = () => {
+  const servicesList = [
+    { title: 'Aluminium Scrap', description: 'High-quality aluminium scrap available for recycling and industrial use.', image: '/images/service-icon-aluminium.jpg' },
+    { title: 'Banks Interior Decorators', description: 'Expert interior decoration services tailored specifically for banking environments.', image: '/images/service-icon-banks.jpg' },
+    // Add the rest of your services here
+  ];
+
+  return (
+    <ServicesSection>
+      <h2>Our Services</h2>
+      <ServicesContent initial="hidden" animate="visible" variants={servicesVariants}>
+        {servicesList.map((service, index) => (
+          <ServiceItem key={index} variants={serviceItemVariants}>
+            <img src={service.image} alt={service.title} />
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </ServiceItem>
+        ))}
+      </ServicesContent>
+    </ServicesSection>
+  );
+};
+
+export default Services;
